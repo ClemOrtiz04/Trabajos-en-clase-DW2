@@ -1,0 +1,17 @@
+[
+    {
+        "id": 103,
+        "descripcion": "Jabón",
+        "precio": 23
+    },
+    {
+        "id": 321,
+        "descripcion": "Tortilla",
+        "precio": 28
+    },
+    {
+        "id": 405,
+        "descripcion": "Leche",
+        "precio": 45
+    }
+]
