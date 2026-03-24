@@ -2,12 +2,12 @@ import { Sequelize, DataTypes } from 'sequelize'
 
 const sequelize = new Sequelize({
 dialect: 'sqlite',
-storage: 'cursos.sqlite' // nombre de la base de datos
+storage: 'articulo.sqlite' // nombre de la base de datos
 });
 
 // configuración de modelos -> tablas
 
-const Curso = sequelize.define('Curso', {
+const Articulo = sequelize.define('Articulo', {
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
@@ -30,4 +30,4 @@ sequelize.sync();
 
 init();
 
-export { Curso } // exportar el modelo(s) que se defina(n)
+export { Articulo } // exportar el modelo(s) que se defina(n)

@@ -1,6 +1,6 @@
 import express from 'express'
 import bodyParser from 'body-parser'
-import { Curso } from './db.js'
+import { Venta } from './db.js'
 
 const port = 3000
 
@@ -11,14 +11,14 @@ app.listen(port, () => {
     console.log('Servicio iniciado:', port)
 })
 
-app.get('/cursos', async (req, res) => {
-    const data = await Curso.findAll(); // regresar todos los objetos (registros) de cursos
+app.get('/ventas', async (req, res) => {
+    const data = await Venta.findAll(); // regresar todos los objetos (registros) de ventas
     res.send(data);
 })
 
-app.get('/cursos/:id', async (req, res) => {
+app.get('/ventas/:id', async (req, res) => {
     const { id } = req.params;
-    const data = await Curso.findByPk(id); // regresar un objeto (registro) por llave primaria
+    const data = await Venta.findByPk(id); // regresar un objeto (registro) por llave primaria
     if (data) {
         res.send(data);
     } else {
@@ -26,32 +26,32 @@ app.get('/cursos/:id', async (req, res) => {
     }
 })
 
-app.post('/cursos', async (req, res) => {
+app.post('/ventas', async (req, res) => {
     const body = req.body;
-    const data = await Curso.create(body); // crear un objeto (registro) de cursos
+    const data = await Venta.create(body); // crear un objeto (registro) de ventas
     res.send(data);
 })
 
-app.put('/cursos/:id', async (req, res) => {
+app.put('/ventas/:id', async (req, res) => {
     const { id } = req.params;
     const body = req.body;
-    const data = await Curso.update(
+    const data = await Venta.update(
         body,
         {
             where: {
                 id
             }
         }
-    ); // actualizr un objeto (registro) de cursos
+    ); // actualizr un objeto (registro) de ventas
     res.send(data);
 })
 
-app.delete('/cursos/:id', async (req, res) => {
-     const { id } = req.params;
-     const data = await Curso.destroy({
+app.delete('/ventas/:id', async (req, res) => {
+    const { id } = req.params;
+    const data = await Venta.destroy({
         where: {
             id,
         },
-    }); // eliminar un objeto (registro) de cursos
+    }); // eliminar un objeto (registro) de ventas
     res.send(data)
 })

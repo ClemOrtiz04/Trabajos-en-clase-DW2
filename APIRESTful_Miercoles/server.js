@@ -1,6 +1,6 @@
 import express from 'express'
 import bodyParser from 'body-parser'
-import { Curso } from './db.js'
+import { Articulo } from './db.js'
 
 const port = 3000
 
@@ -11,14 +11,14 @@ app.listen(port, () => {
     console.log('Servicio iniciado:', port)
 })
 
-app.get('/cursos', async (req, res) => {
-    const data = await Curso.findAll(); // regresar todos los objetos (registros) de cursos
+app.get('/articulos', async (req, res) => {
+    const data = await Articulo.findAll(); // regresar todos los objetos (registros) de articulos
     res.send(data);
 })
 
-app.get('/cursos/:id', async (req, res) => {
+app.get('/articulos/:id', async (req, res) => {
     const { id } = req.params;
-    const data = await Curso.findByPk(id); // regresar un objeto (registro) por llave primaria
+    const data = await Articulo.findByPk(id); // regresar un objeto (registro) por llave primaria
     if (data) {
         res.send(data);
     } else {
@@ -26,32 +26,32 @@ app.get('/cursos/:id', async (req, res) => {
     }
 })
 
-app.post('/cursos', async (req, res) => {
+app.post('/articulos', async (req, res) => {
     const body = req.body;
-    const data = await Curso.create(body); // crear un objeto (registro) de cursos
+    const data = await Articulo.create(body); // crear un objeto (registro) de articulos
     res.send(data);
 })
 
-app.put('/cursos/:id', async (req, res) => {
+app.put('/articulos/:id', async (req, res) => {
     const { id } = req.params;
     const body = req.body;
-    const data = await Curso.update(
+    const data = await Articulo.update(
         body,
         {
             where: {
                 id
             }
         }
-    ); // actualizr un objeto (registro) de cursos
+    ); // actualizr un objeto (registro) de articulos
     res.send(data);
 })
 
-app.delete('/cursos/:id', async (req, res) => {
-     const { id } = req.params;
-     const data = await Curso.destroy({
+app.delete('/articulos/:id', async (req, res) => {
+    const { id } = req.params;
+    const data = await Articulo.destroy({
         where: {
             id,
         },
-    }); // eliminar un objeto (registro) de cursos
+    }); // eliminar un objeto (registro) de articulos
     res.send(data)
 })
